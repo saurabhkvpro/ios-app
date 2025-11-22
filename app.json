@@ -1,0 +1,58 @@
+{
+  "expo": {
+    "name": "Famstr",
+    "slug": "scrapit-rn",
+    "owner": "sau0007",
+    "version": "1.4.1",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "scheme": "scrapit",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#AFECFF"
+    },
+    "ios": {
+      "bundleIdentifier": "com.binaryfuel.scapdat",
+      "supportsTablet": true,
+      "buildNumber": "27",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      },
+      "associatedDomains": [
+        "applinks:api-01-dev.azurewebsites.net",
+        "applinks:website-01-dev.azurewebsites.net"
+      ]
+    },
+    "android": {
+      "package": "com.yourorg.scrapit",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "edgeToEdgeEnabled": true,
+      "permissions": [
+        "RECEIVE_BOOT_COMPLETED"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "73bf59e3-9669-41ad-9eb9-78ba27272d30"
+      }
+    },
+    "plugins": [
+      [
+        "expo-notifications",
+        {
+          "color": "#7B3FF2"
+        }
+      ],
+      "./app.plugin.js"
+    ]
+  }
+}
