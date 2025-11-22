@@ -343,6 +343,70 @@ class ApiService {
     }
   }
 
+  async fetchAllTags() {
+    return await this.retryRequest(() => this.client.get(API_CONFIG.ENDPOINTS.FETCH_ALL_TAGS));
+  }
+
+  async fetchAllEvents() {
+    return await this.retryRequest(() => this.client.get(API_CONFIG.ENDPOINTS.FETCH_ALL_EVENTS));
+  }
+
+  async addEvent(payload) {
+    try {
+      const response = await this.client.post(API_CONFIG.ENDPOINTS.ADD_EVENT, {
+        title: payload.title,
+        description: payload.description,
+        location: payload.location,
+        startTime: payload.startTime,
+        endTime: payload.endTime,
+        firstReminder: payload.firstReminder,
+        secondReminder: payload.secondReminder,
+        eventType: Number(payload.eventType),
+        tags: Array.isArray(payload.tags) ? payload.tags : [],
+        visibilityType: Number(payload.visibilityType),
+        shareType: Number(payload.shareType),
+        shareWithId: Array.isArray(payload.shareWithId) ? payload.shareWithId : [],
+      });
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async updateEvent(payload) {
+    try {
+      const response = await this.client.post(API_CONFIG.ENDPOINTS.UPDATE_EVENT, {
+        id: payload.id,
+        title: payload.title,
+        description: payload.description,
+        location: payload.location,
+        startTime: payload.startTime,
+        endTime: payload.endTime,
+        firstReminder: payload.firstReminder,
+        secondReminder: payload.secondReminder,
+        eventType: Number(payload.eventType),
+        tags: Array.isArray(payload.tags) ? payload.tags : [],
+        visibilityType: Number(payload.visibilityType),
+        shareType: Number(payload.shareType),
+        shareWithId: Array.isArray(payload.shareWithId) ? payload.shareWithId : [],
+      });
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async deleteEvent(eventId) {
+    try {
+      const response = await this.client.delete(
+        `${API_CONFIG.ENDPOINTS.DELETE_EVENT}?eventId=${encodeURIComponent(eventId)}`
+      );
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   async deleteAccount() {
     try {
       const response = await this.client.delete(API_CONFIG.ENDPOINTS.DELETE_USER);

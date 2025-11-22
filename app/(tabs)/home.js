@@ -14,6 +14,7 @@ import {
   BackHandler,
   Share,
 } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 import { useRouter, useLocalSearchParams, useFocusEffect } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -978,6 +979,10 @@ export default function Home() {
     await fetchNudgeData();
   };
 
+  const handleEventsIconPress = () => {
+    router.push('/events');
+  };
+
   const handleNudgeSendMessage = async (nudge) => {
     try {
       if (!nudge?.id) {
@@ -1120,7 +1125,14 @@ export default function Home() {
                 { tintColor: selectedGroupId > 0 ? COLORS.purple1 : COLORS.white }
               ]}
             />
+          </TouchableOpacity>
 
+          <TouchableOpacity style={styles.headerButton} onPress={handleEventsIconPress}>
+            <Ionicons
+              name="calendar-outline"
+              size={24}
+              color={selectedGroupId > 0 ? COLORS.purple1 : COLORS.white}
+            />
           </TouchableOpacity>
         </View>
       </SafeAreaView>
